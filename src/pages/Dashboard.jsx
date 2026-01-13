@@ -1,80 +1,82 @@
 import { students } from "../data/student";
-import StudentCard from "../components/cards/StudentCards";
-import Filters from "../components/filters/Filters";
-import { useFilters } from "../hooks/useFilters";
-import Loading from "../components/feedback/Loading";
-import EmptyState from "../components/feedback/EmptyState";
-import { motion } from "framer-motion";
+import StatCard from "../components/cards/StatCard";
+import BestStudent from "../components/cards/BestStudent";
+import ExamBarChart from "../components/charts/ExamBarChart";
+import PerformancePieChart from "../components/charts/PerformancePieChart";
+
+import {
+  getAverage,
+  getLowPerformers,
+  getSubjectAverages,
+} from "../utils/analysis";
+
+import { getPerformanceDistribution } from "../utils/pieAnalytics";
 
 export default function Dashboard() {
-  const { filtered, loading, filters, setFilters } = useFilters(students);
+  const totalStudents = students.length;
 
-  if (loading) return <Loading />;
-  if (!filtered.length) return <EmptyState />;
+  const overallAvg = (
+    students.reduce((sum, s) => sum + getAverage(s.scores), 0) / totalStudents
+  ).toFixed(1);
+
+  // 🔝 TOP 3 PERFORMERS
+  const topPerformers = [...students]
+    .sort((a, b) => getAverage(b.scores) - getAverage(a.scores))
+    .slice(0, 3);
+
+  // 🚨 LOW PERFORMERS
+  const lowPerformers = getLowPerformers(students);
+
+  const subjectData = getSubjectAverages(students);
+  const pieData = getPerformanceDistribution(students);
 
   return (
-    <div className="px-4 py-6 sm:px-6 lg:px-8">
-      {/* HEADER */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6"
-      >
-        <h3 className="text-lg font-semibold text-gray-700">
-          Students Overview
-        </h3>
+    <div className="min-h-screen bg-gray-50 p-8 space-y-8">
+      {/* TOP STATS */}
+      <div className="grid grid-cols-4 gap-6">
+        <StatCard title="Student Count" value={totalStudents} />
+        <StatCard title="Exam Average" value={`${overallAvg}%`} />
+        <StatCard title="Top Performers" value={topPerformers.length} />
+        <StatCard title="Low Performers" value={lowPerformers.length} />
+      </div>
 
-        {/* Filters move below title on mobile */}
-        <div className="w-full sm:w-auto">
-          <Filters filters={filters} setFilters={setFilters} />
+      <div className="grid grid-cols-12 gap-8">
+        {/* SUBJECT BAR CHART */}
+        <div className="col-span-7 bg-white rounded-2xl p-6 shadow-sm">
+          <h3 className="font-semibold mb-4">Subject-wise Performance</h3>
+          <ExamBarChart data={subjectData} />
         </div>
-      </motion.div>
 
-      {/* CARD GRID */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.15 }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
-      >
-        {filtered.map((s) => (
-          <motion.div key={s.id} variants={cardVariants} className="w-full">
-            <StudentCard student={s} />
-          </motion.div>
-        ))}
-      </motion.div>
+        {/* PIE CHART */}
+        <div className="col-span-5 bg-white rounded-2xl p-6 shadow-sm">
+          <h3 className="font-semibold mb-4">Performance Distribution</h3>
+          <PerformancePieChart data={pieData} />
+        </div>
+      </div>
+
+      {/* 🔝 TOP 3 PERFORMERS */}
+      <div>
+        <h3 className="font-semibold mb-4">Top 3 Performers</h3>
+        <div className="grid grid-cols-3 gap-4">
+          {topPerformers.map((s) => (
+            <BestStudent
+              key={s.id}
+              student={s}
+              label={`${getAverage(s.scores)}%`}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* 🚨 LOW PERFORMERS */}
+      <div>
+        <h3 className="font-semibold mb-4">Needs Attention</h3>
+        <div className="grid grid-cols-3 gap-4">
+          {lowPerformers.map((s) => (
+            <BestStudent key={s.id} student={s} label="Needs Improvement" />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
-
-/* 🔹 Animation Variants */
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      ease: "easeOut",
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 24,
-    scale: 0.96,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut",
-    },
-  },
-};

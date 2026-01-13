@@ -66,7 +66,7 @@ function SidebarContent({ onClose }) {
       {/* NAVIGATION */}
       <nav className="px-3 py-4 space-y-1">
         <NavItem to="/" label="Dashboard" icon="📊" onClose={onClose} />
-        <NavItem to="/" label="Students" icon="👨‍🎓" onClose={onClose} />
+        <NavItem to="/students" label="Students" icon="👨‍🎓" onClose={onClose} />
         <NavItem to="/" label="Insights" icon="🧠" onClose={onClose} />
         <NavItem to="/" label="Reports" icon="📄" onClose={onClose} />
         <NavItem to="/" label="Settings" icon="⚙️" onClose={onClose} />

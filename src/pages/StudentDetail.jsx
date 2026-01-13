@@ -1,15 +1,10 @@
 import { useParams } from "react-router-dom";
 import { students } from "../data/student";
 import StudentInsights from "../components/StudentInsights";
+import DailyExamBarChart from "../components/charts/DailyExamBarChart";
+import SubjectBarChart from "../components/charts/SubjectBarChart";
 
-import { lazy, Suspense, useMemo } from "react";
-
-const PerformanceLineChart = lazy(() =>
-  import("../components/charts/PerformanceLineChart")
-);
-const SubjectBarChart = lazy(() =>
-  import("../components/charts/SubjectBarChart")
-);
+import { useMemo } from "react";
 
 export default function StudentDetail() {
   const { id } = useParams();
@@ -19,11 +14,13 @@ export default function StudentDetail() {
 
   const scores = student.scores;
 
+  /* 🔹 Average score */
   const avg = useMemo(() => {
     const values = Object.values(scores);
     return values.reduce((a, b) => a + b, 0) / values.length;
   }, [scores]);
 
+  /* 🔹 Status */
   const status =
     avg < 50
       ? { text: "Needs Improvement", color: "bg-rose-100 text-rose-600" }
@@ -33,6 +30,14 @@ export default function StudentDetail() {
           text: "Excellent Performance",
           color: "bg-emerald-100 text-emerald-600",
         };
+
+  /* 🔹 DAILY EXAM DATA (STUDENT ONLY) */
+  const dailyExamData = useMemo(() => {
+    return student.exams.map((exam) => ({
+      label: exam.label,
+      marks: exam.marks,
+    }));
+  }, [student.exams]);
 
   return (
     <div className="p-8 space-y-8">
@@ -66,48 +71,41 @@ export default function StudentDetail() {
         </div>
 
         {/* 📊 QUICK STATS */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           <Stat label="Physics" value={scores.Phy} />
           <Stat label="Chemistry" value={scores.Chem} />
           <Stat label="Maths" value={scores.Math} />
-          <Stat label="Test-Date" value="13 Jan 2026" />
+          <Stat label="Avg %" value={avg.toFixed(1)} />
         </div>
       </div>
 
-      {/* 📈 CHARTS SECTION */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Suspense fallback={<Skeleton />}>
-          <div className="bg-white rounded-2xl p-4 shadow-sm">
-            <h3 className="text-sm font-semibold text-gray-700 mb-2">
-              Performance Trend
-            </h3>
-            <PerformanceLineChart data={student.history} />
-          </div>
-        </Suspense>
-
-        <Suspense fallback={<Skeleton />}>
-          <div className="bg-white rounded-2xl p-4 shadow-sm">
-            <h3 className="text-sm font-semibold text-gray-700 mb-2">
-              Subject-wise Scores
-            </h3>
-            <SubjectBarChart scores={scores} />
-          </div>
-        </Suspense>
+      {/* ✅ DAILY EXAM BAR CHART */}
+      <div className="bg-white rounded-2xl p-6 shadow-sm">
+        <h3 className="font-semibold mb-4">Daily Exam Performance (30 Days)</h3>
+        <DailyExamBarChart data={dailyExamData} />
       </div>
 
-      {/* 🧠 SMART PERFORMANCE INSIGHTS (NEW) */}
+      {/* 📊 SUBJECT-WISE BAR CHART */}
+      <div className="bg-white rounded-2xl p-6 shadow-sm">
+        <h3 className="font-semibold mb-4">Subject-wise Performance</h3>
+        <SubjectBarChart scores={scores} />
+      </div>
+
+      {/* 🧠 SMART PERFORMANCE INSIGHTS */}
       <StudentInsights student={student} />
 
-      {/* 🕒 RESULTS HISTORY EXPLANATION */}
+      {/* 🕒 SUMMARY */}
       <div className="bg-white rounded-2xl p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-gray-800">
-          Results History Summary
+          Performance Summary
         </h3>
         <p className="mt-2 text-gray-600">
-          The student’s performance trend shows a
-          {avg > 75 ? " positive upward growth " : " fluctuating pattern "}
-          over the past months. Consistency in practice and regular assessments
-          have contributed to the current performance level.
+          The student’s overall performance indicates
+          {avg > 75
+            ? " strong academic consistency with positive growth."
+            : avg > 50
+            ? " moderate performance with scope for improvement."
+            : " a need for focused mentoring and regular assessments."}
         </p>
       </div>
     </div>
@@ -122,9 +120,4 @@ function Stat({ label, value }) {
       <p className="text-lg font-semibold text-gray-800">{value}</p>
     </div>
   );
-}
-
-/* 🔹 Skeleton loader */
-function Skeleton() {
-  return <div className="h-64 bg-gray-200 animate-pulse rounded-2xl" />;
 }

@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Dashboard from "./pages/Dashboard";
+import Students from "./pages/Students";
 import StudentDetail from "./pages/StudentDetail";
 import Sidebar from "./layout/Sidebar";
 import Topbar from "./layout/Topbar";
@@ -19,6 +20,7 @@ export default function App() {
           <Topbar onMenuClick={() => setSidebarOpen(true)} />
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/students" element={<Students />} />
             <Route path="/student/:id" element={<StudentDetail />} />
           </Routes>
         </div>
