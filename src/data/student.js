@@ -3,7 +3,7 @@ export const students = [
     id: 1,
     name: "Aarav Sharma",
     image: "https://i.pravatar.cc/256?img=11",
-    class: "10-A",
+    class: "JEE - Batch A",
     scores: { Math: 90, Chem: 85, Phy: 88 },
     history: [
       { month: "Jan", score: 82 },
@@ -21,7 +21,7 @@ export const students = [
     id: 2,
     name: "Neha Verma",
     image: "https://i.pravatar.cc/256?img=12",
-    class: "10-B",
+    class: "JEE - Batch B",
     scores: { Math: 45, Chem: 50, Phy: 55 },
     history: [
       { month: "Jan", score: 52 },
@@ -39,7 +39,7 @@ export const students = [
     id: 3,
     name: "Rohan Mehta",
     image: "https://i.pravatar.cc/256?img=13",
-    class: "10-A",
+    class: "JEE - Batch A",
     scores: { Math: 78, Chem: 74, Phy: 80 },
     history: [
       { month: "Jan", score: 72 },
@@ -57,7 +57,7 @@ export const students = [
     id: 4,
     name: "Priya Singh",
     image: "https://i.pravatar.cc/256?img=14",
-    class: "10-C",
+    class: "NEET - Batch C",
     scores: { Math: 88, Chem: 90, Phy: 92 },
     history: [
       { month: "Jan", score: 85 },
@@ -75,7 +75,7 @@ export const students = [
     id: 5,
     name: "Aditya Kumar",
     image: "https://i.pravatar.cc/256?img=15",
-    class: "10-B",
+    class: "NEET - Batch C",
     scores: { Math: 60, Chem: 58, Phy: 62 },
     history: [
       { month: "Jan", score: 55 },
@@ -93,7 +93,7 @@ export const students = [
     id: 6,
     name: "Simran Kaur",
     image: "https://i.pravatar.cc/256?img=16",
-    class: "10-A",
+    class: "+2 Boards - Batch A",
     scores: { Math: 95, Chem: 93, Phy: 90 },
     history: [
       { month: "Jan", score: 90 },
@@ -111,7 +111,7 @@ export const students = [
     id: 7,
     name: "Kunal Gupta",
     image: "https://i.pravatar.cc/256?img=17",
-    class: "10-C",
+    class: "+2 Boards - Batch B",
     scores: { Math: 48, Chem: 52, Phy: 50 },
     history: [
       { month: "Jan", score: 50 },
@@ -129,7 +129,7 @@ export const students = [
     id: 8,
     name: "Ananya Joshi",
     image: "https://i.pravatar.cc/256?img=18",
-    class: "10-B",
+    class: "10th boards - Batch A",
     scores: { Math: 82, Chem: 85, Phy: 80 },
     history: [
       { month: "Jan", score: 78 },
@@ -147,7 +147,7 @@ export const students = [
     id: 9,
     name: "Rahul Malhotra",
     image: "https://i.pravatar.cc/256?img=19",
-    class: "10-A",
+    class: "10th boards - Batch B",
     scores: { Math: 70, Chem: 68, Phy: 72 },
     history: [
       { month: "Jan", score: 65 },
@@ -165,7 +165,7 @@ export const students = [
     id: 10,
     name: "Pooja Nair",
     image: "https://i.pravatar.cc/256?img=20",
-    class: "10-C",
+    class: "JEE - Batch B",
     scores: { Math: 92, Chem: 89, Phy: 91 },
     history: [
       { month: "Jan", score: 88 },

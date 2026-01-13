@@ -70,6 +70,7 @@ export default function StudentDetail() {
           <Stat label="Physics" value={scores.Phy} />
           <Stat label="Chemistry" value={scores.Chem} />
           <Stat label="Maths" value={scores.Math} />
+          <Stat label="Test-Date" value="13 Jan 2026" />
         </div>
       </div>
 
