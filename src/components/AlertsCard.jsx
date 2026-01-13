@@ -1,11 +1,18 @@
 export default function AlertsCard({ scores }) {
   const alerts = [];
 
-  if (scores.Chemistry < 88) {
-    alerts.push("⚠️ Chemistry needs focused revision");
+  if (scores.Math < 60) {
+    alerts.push("📌 Maths requires immediate remedial sessions.");
   }
-  if (scores.Physics >= 88) {
-    alerts.push("✅ Physics improvement is excellent");
+  if (scores.Chemistry < 70) {
+    alerts.push("⚠️ Chemistry concepts need revision and practice.");
+  }
+  if (scores.Physics >= 85) {
+    alerts.push("✅ Physics performance is stable and improving.");
+  }
+
+  if (alerts.length === 0) {
+    alerts.push("✅ No immediate academic risks detected.");
   }
 
   return (
@@ -13,7 +20,7 @@ export default function AlertsCard({ scores }) {
       <h3 className="font-semibold">🔔 Smart Alerts</h3>
 
       {alerts.map((alert, i) => (
-        <p key={i} className="mt-2 text-sm">
+        <p key={i} className="mt-2 text-sm text-gray-700">
           {alert}
         </p>
       ))}

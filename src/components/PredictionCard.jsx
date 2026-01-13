@@ -6,10 +6,18 @@ export default function PredictionCard({ history }) {
   return (
     <div className="bg-white rounded-xl p-5 shadow">
       <h3 className="font-semibold">⏱️ Performance Prediction</h3>
-      <p className="mt-2 text-gray-700">
-        Expected to reach <b>90+</b> in approximately <b>{months}</b> month(s)
-        at current pace.
-      </p>
+
+      {months === "Not predictable" ? (
+        <p className="mt-2 text-gray-600">
+          Current performance trend is inconsistent. Improvement is possible
+          with regular practice and assessments.
+        </p>
+      ) : (
+        <p className="mt-2 text-gray-700">
+          At the current improvement rate, the student may reach <b>90+</b> in
+          approximately <b>{months}</b> month(s).
+        </p>
+      )}
     </div>
   );
 }

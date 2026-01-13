@@ -3,6 +3,7 @@ import { memo, useMemo } from "react";
 
 const StudentCard = memo(function StudentCard({ student }) {
   const scores = student.scores || {};
+  const testDate = student.testDate || "13 Jan";
 
   const avg = useMemo(() => {
     const values = Object.values(scores).filter((v) => typeof v === "number");
@@ -39,6 +40,12 @@ const StudentCard = memo(function StudentCard({ student }) {
 
         <p className="text-sm text-gray-500">{student.class}</p>
 
+        {/* TEST DATE */}
+        <p className="text-xs text-gray-400 mt-1">
+          Test Date:{" "}
+          <span className="font-medium text-gray-600">{testDate}</span>
+        </p>
+
         {/* SUBJECT SCORES */}
         <div className="grid grid-cols-3 gap-3 mt-4">
           <Score label="Phy" value={scores.Phy} />
@@ -66,12 +73,17 @@ const StudentCard = memo(function StudentCard({ student }) {
 
 export default StudentCard;
 
-/* Memoized score pill */
+/* ===========================
+   Memoized Score Component
+=========================== */
+
 const Score = memo(function Score({ label, value }) {
   const safeValue = typeof value === "number" ? value : "-";
 
   const color =
-    value < 50
+    typeof value !== "number"
+      ? "text-gray-400"
+      : value < 50
       ? "text-rose-600"
       : value < 75
       ? "text-amber-600"
