@@ -1,22 +1,107 @@
 @import "tailwindcss";
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ----------------------------------
+   GLOBAL BEHAVIOR
+----------------------------------- */
 
 /* Smooth scrolling everywhere */
 html {
   scroll-behavior: smooth;
 }
 
-/* Prevent mobile scroll glitches */
+/* Prevent mobile tap highlight */
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Base body styles */
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #f8fafc;
   color: #0f172a;
   overscroll-behavior: none;
+  line-height: 1.5;
+}
+
+/* ----------------------------------
+   MOBILE-FIRST IMPROVEMENTS
+----------------------------------- */
+
+/* Better text rendering on mobile */
+body,
+button,
+input,
+textarea {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent horizontal overflow on small screens */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Improve touch targets */
+button,
+a {
+  touch-action: manipulation;
+}
+
+/* ----------------------------------
+   RESPONSIVE TYPOGRAPHY
+----------------------------------- */
+
+h1 {
+  @apply text-xl sm:text-2xl lg:text-3xl;
+}
+
+h2 {
+  @apply text-lg sm:text-xl lg:text-2xl;
+}
+
+h3 {
+  @apply text-base sm:text-lg;
+}
+
+p {
+  @apply text-sm sm:text-base;
+}
+
+/* ----------------------------------
+   RESPONSIVE CONTAINERS
+----------------------------------- */
+
+/* Page padding consistency */
+.page {
+  @apply px-4 sm:px-6 lg:px-8;
+}
+
+/* Card grid responsiveness helper */
+.responsive-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+/* ----------------------------------
+   SCROLL & PERFORMANCE OPTIMIZATION
+----------------------------------- */
+
+/* Momentum scrolling on iOS */
+.scroll-smooth {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
