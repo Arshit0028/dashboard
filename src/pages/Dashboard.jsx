@@ -13,18 +13,22 @@ export default function Dashboard() {
   if (!filtered.length) return <EmptyState />;
 
   return (
-    <div className="p-8">
+    <div className="px-4 py-6 sm:px-6 lg:px-8">
       {/* HEADER */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="flex justify-between items-center mb-6"
+        className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6"
       >
         <h3 className="text-lg font-semibold text-gray-700">
           Students Overview
         </h3>
-        <Filters filters={filters} setFilters={setFilters} />
+
+        {/* Filters move below title on mobile */}
+        <div className="w-full sm:w-auto">
+          <Filters filters={filters} setFilters={setFilters} />
+        </div>
       </motion.div>
 
       {/* CARD GRID */}
@@ -32,11 +36,11 @@ export default function Dashboard() {
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+        viewport={{ once: true, amount: 0.15 }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
       >
         {filtered.map((s) => (
-          <motion.div key={s.id} variants={cardVariants}>
+          <motion.div key={s.id} variants={cardVariants} className="w-full">
             <StudentCard student={s} />
           </motion.div>
         ))}
@@ -52,7 +56,7 @@ const containerVariants = {
   show: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.1,
       ease: "easeOut",
     },
   },
@@ -61,15 +65,15 @@ const containerVariants = {
 const cardVariants = {
   hidden: {
     opacity: 0,
-    y: 30,
-    scale: 0.95,
+    y: 24,
+    scale: 0.96,
   },
   show: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      duration: 0.45,
+      duration: 0.4,
       ease: "easeOut",
     },
   },
