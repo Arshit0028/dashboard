@@ -7,8 +7,8 @@ export default function Sidebar() {
       <div>
         {/* BRAND */}
         <div className="p-6 border-b">
-          <h1 className="text-2xl font-bold text-indigo-600">Teacher Panel</h1>
-          <p className="text-sm text-gray-500 mt-1">Student Insights</p>
+          <h1 className="text-2xl font-bold text-indigo-600">Basu Classes</h1>
+          <p className="text-sm text-gray-500 mt-1">Teacher Panel</p>
         </div>
 
         {/* NAVIGATION */}
