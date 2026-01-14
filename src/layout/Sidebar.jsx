@@ -48,7 +48,7 @@ function SidebarContent({ onClose }) {
           <img src="/logo.svg" alt="EduInsight Logo" className="w-13 h-9" />
 
           <div>
-            <p className="text-xs text-gray-500">Basu Classes</p>
+            <p className="text-xs text-gray-500">Academy Classes</p>
           </div>
         </div>
 
