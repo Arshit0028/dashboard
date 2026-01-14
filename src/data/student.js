@@ -13,7 +13,7 @@ export const students = [
     exams: Array.from({ length: 30 }, (_, i) => ({
       day: i + 1,
       label: `Day ${i + 1}`,
-      marks: 75 + (i % 10), // 75–84
+      marks: 75 + (i % 10),
     })),
   },
 
@@ -31,7 +31,7 @@ export const students = [
     exams: Array.from({ length: 30 }, (_, i) => ({
       day: i + 1,
       label: `Day ${i + 1}`,
-      marks: 40 + (i % 8), // 40–47
+      marks: 40 + (i % 8),
     })),
   },
 
@@ -49,7 +49,7 @@ export const students = [
     exams: Array.from({ length: 30 }, (_, i) => ({
       day: i + 1,
       label: `Day ${i + 1}`,
-      marks: 65 + (i % 10), // 65–74
+      marks: 65 + (i % 10),
     })),
   },
 
@@ -67,7 +67,7 @@ export const students = [
     exams: Array.from({ length: 30 }, (_, i) => ({
       day: i + 1,
       label: `Day ${i + 1}`,
-      marks: 85 + (i % 10), // 85–94
+      marks: 85 + (i % 10),
     })),
   },
 
@@ -76,7 +76,7 @@ export const students = [
     name: "Aditya Kumar",
     image: "https://i.pravatar.cc/256?img=15",
     class: "NEET - Batch C",
-    scores: { Math: 60, Chem: 58, Phy: 62 },
+    scores: { Math: 10, Chem: 15, Phy: 20 },
     history: [
       { month: "Jan", score: 55 },
       { month: "Feb", score: 58 },
@@ -85,7 +85,7 @@ export const students = [
     exams: Array.from({ length: 30 }, (_, i) => ({
       day: i + 1,
       label: `Day ${i + 1}`,
-      marks: 55 + (i % 8), // 55–62
+      marks: 55 + (i % 8),
     })),
   },
 
@@ -103,7 +103,7 @@ export const students = [
     exams: Array.from({ length: 30 }, (_, i) => ({
       day: i + 1,
       label: `Day ${i + 1}`,
-      marks: 90 + (i % 10), // 90–99
+      marks: 90 + (i % 10),
     })),
   },
 
@@ -121,7 +121,7 @@ export const students = [
     exams: Array.from({ length: 30 }, (_, i) => ({
       day: i + 1,
       label: `Day ${i + 1}`,
-      marks: 42 + (i % 7), // 42–48
+      marks: 42 + (i % 7),
     })),
   },
 
@@ -139,7 +139,7 @@ export const students = [
     exams: Array.from({ length: 30 }, (_, i) => ({
       day: i + 1,
       label: `Day ${i + 1}`,
-      marks: 75 + (i % 8), // 75–82
+      marks: 75 + (i % 8),
     })),
   },
 
@@ -157,7 +157,7 @@ export const students = [
     exams: Array.from({ length: 30 }, (_, i) => ({
       day: i + 1,
       label: `Day ${i + 1}`,
-      marks: 60 + (i % 10), // 60–69
+      marks: 60 + (i % 10),
     })),
   },
 
@@ -175,7 +175,187 @@ export const students = [
     exams: Array.from({ length: 30 }, (_, i) => ({
       day: i + 1,
       label: `Day ${i + 1}`,
-      marks: 85 + (i % 10), // 85–94
+      marks: 85 + (i % 10),
+    })),
+  },
+
+  {
+    id: 11,
+    name: "Vikram Rao",
+    image: "https://i.pravatar.cc/256?img=21",
+    class: "JEE - Batch A",
+    scores: { Math: 84, Chem: 80, Phy: 82 },
+    history: [
+      { month: "Jan", score: 78 },
+      { month: "Feb", score: 80 },
+      { month: "Mar", score: 83 },
+    ],
+    exams: Array.from({ length: 30 }, (_, i) => ({
+      day: i + 1,
+      label: `Day ${i + 1}`,
+      marks: 70 + (i % 10),
+    })),
+  },
+
+  {
+    id: 12,
+    name: "Sneha Patel",
+    image: "https://i.pravatar.cc/256?img=22",
+    class: "NEET - Batch C",
+    scores: { Math: 75, Chem: 82, Phy: 78 },
+    history: [
+      { month: "Jan", score: 74 },
+      { month: "Feb", score: 77 },
+      { month: "Mar", score: 79 },
+    ],
+    exams: Array.from({ length: 30 }, (_, i) => ({
+      day: i + 1,
+      label: `Day ${i + 1}`,
+      marks: 72 + (i % 8),
+    })),
+  },
+
+  {
+    id: 13,
+    name: "Mohit Agarwal",
+    image: "https://i.pravatar.cc/256?img=23",
+    class: "+2 Boards - Batch A",
+    scores: { Math: 91, Chem: 89, Phy: 87 },
+    history: [
+      { month: "Jan", score: 86 },
+      { month: "Feb", score: 88 },
+      { month: "Mar", score: 90 },
+    ],
+    exams: Array.from({ length: 30 }, (_, i) => ({
+      day: i + 1,
+      label: `Day ${i + 1}`,
+      marks: 88 + (i % 10),
+    })),
+  },
+
+  {
+    id: 14,
+    name: "Ritika Choudhary",
+    image: "https://i.pravatar.cc/256?img=24",
+    class: "10th boards - Batch A",
+    scores: { Math: 80, Chem: 78, Phy: 76 },
+    history: [
+      { month: "Jan", score: 74 },
+      { month: "Feb", score: 76 },
+      { month: "Mar", score: 78 },
+    ],
+    exams: Array.from({ length: 30 }, (_, i) => ({
+      day: i + 1,
+      label: `Day ${i + 1}`,
+      marks: 70 + (i % 9),
+    })),
+  },
+
+  {
+    id: 15,
+    name: "Aman Tiwari",
+    image: "https://i.pravatar.cc/256?img=25",
+    class: "JEE - Batch B",
+    scores: { Math: 60, Chem: 58, Phy: 62 },
+    history: [
+      { month: "Jan", score: 55 },
+      { month: "Feb", score: 57 },
+      { month: "Mar", score: 59 },
+    ],
+    exams: Array.from({ length: 30 }, (_, i) => ({
+      day: i + 1,
+      label: `Day ${i + 1}`,
+      marks: 50 + (i % 8),
+    })),
+  },
+
+  {
+    id: 16,
+    name: "Isha Malviya",
+    image: "https://i.pravatar.cc/256?img=26",
+    class: "NEET - Batch C",
+    scores: { Math: 89, Chem: 92, Phy: 88 },
+    history: [
+      { month: "Jan", score: 85 },
+      { month: "Feb", score: 87 },
+      { month: "Mar", score: 90 },
+    ],
+    exams: Array.from({ length: 30 }, (_, i) => ({
+      day: i + 1,
+      label: `Day ${i + 1}`,
+      marks: 86 + (i % 10),
+    })),
+  },
+
+  {
+    id: 17,
+    name: "Nikhil Bansal",
+    image: "https://i.pravatar.cc/256?img=27",
+    class: "+2 Boards - Batch B",
+    scores: { Math: 55, Chem: 57, Phy: 54 },
+    history: [
+      { month: "Jan", score: 52 },
+      { month: "Feb", score: 54 },
+      { month: "Mar", score: 55 },
+    ],
+    exams: Array.from({ length: 30 }, (_, i) => ({
+      day: i + 1,
+      label: `Day ${i + 1}`,
+      marks: 48 + (i % 7),
+    })),
+  },
+
+  {
+    id: 18,
+    name: "Kavya Iyer",
+    image: "https://i.pravatar.cc/256?img=28",
+    class: "10th boards - Batch B",
+    scores: { Math: 88, Chem: 90, Phy: 87 },
+    history: [
+      { month: "Jan", score: 84 },
+      { month: "Feb", score: 86 },
+      { month: "Mar", score: 88 },
+    ],
+    exams: Array.from({ length: 30 }, (_, i) => ({
+      day: i + 1,
+      label: `Day ${i + 1}`,
+      marks: 82 + (i % 9),
+    })),
+  },
+
+  {
+    id: 19,
+    name: "Sahil Khanna",
+    image: "https://i.pravatar.cc/256?img=29",
+    class: "JEE - Batch A",
+    scores: { Math: 10, Chem: 10, Phy: 10 },
+    history: [
+      { month: "Jan", score: 68 },
+      { month: "Feb", score: 70 },
+      { month: "Mar", score: 72 },
+    ],
+    exams: Array.from({ length: 30 }, (_, i) => ({
+      day: i + 1,
+      label: `Day ${i + 1}`,
+      marks: 65 + (i % 8),
+    })),
+  },
+
+  {
+    id: 20,
+    name: "Meera Nandakumar",
+    image: "https://i.pravatar.cc/256?img=30",
+    class: "NEET - Batch C",
+    scores: { Math: 10, Chem: 10, Phy: 10 },
+    history: [
+      { month: "Jan", score: 90 },
+      { month: "Feb", score: 92 },
+      { month: "Mar", score: 95 },
+    ],
+    exams: Array.from({ length: 30 }, (_, i) => ({
+      day: i + 1,
+      label: `Day ${i + 1}`,
+      marks: 90 + (i % 10),
     })),
   },
 ];

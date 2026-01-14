@@ -3,7 +3,7 @@ import { memo, useMemo } from "react";
 
 const StudentCard = memo(function StudentCard({ student }) {
   const scores = student.scores || {};
-  const testDate = student.testDate || "13 Jan";
+  const testDate = student.testDate || "14 Jan";
 
   const avg = useMemo(() => {
     const values = Object.values(scores).filter((v) => typeof v === "number");

@@ -89,14 +89,21 @@ export function getSubjectAverages(students = []) {
   const subjects = ["Math", "Chem", "Phy"];
 
   return subjects.map((subject) => {
-    const total = students.reduce(
-      (sum, s) => sum + (s.scores?.[subject] || 0),
-      0
-    );
+    let total = 0;
+    let count = 0;
+
+    students.forEach((s) => {
+      const score = s.scores?.[subject];
+
+      if (typeof score === "number") {
+        total += score;
+        count++;
+      }
+    });
 
     return {
       subject,
-      avg: Number((total / students.length).toFixed(1)),
+      avg: count ? Number((total / count).toFixed(1)) : 0,
     };
   });
 }

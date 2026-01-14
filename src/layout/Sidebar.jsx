@@ -77,10 +77,10 @@ function SidebarContent({ onClose }) {
         <p className="text-xs text-indigo-600 font-semibold">CLASS SUMMARY</p>
         <div className="mt-2 space-y-1 text-sm text-gray-700">
           <p>
-            👥 Students: <strong>10</strong>
+            👥 Students: <strong>20</strong>
           </p>
           <p>
-            📈 Avg Score: <strong>74%</strong>
+            📈 Avg of class: <strong>74%</strong>
           </p>
           <p>
             ⚠️ Attention Needed: <strong>3</strong>

@@ -15,8 +15,12 @@ import { getPerformanceDistribution } from "../utils/pieAnalytics";
 export default function Dashboard() {
   const totalStudents = students.length;
 
+  // ✅ TRUE CLASS AVERAGE (all subjects of all students)
   const overallAvg = (
-    students.reduce((sum, s) => sum + getAverage(s.scores), 0) / totalStudents
+    students.reduce(
+      (sum, s) => sum + Object.values(s.scores).reduce((a, b) => a + b, 0),
+      0
+    ) / students.reduce((count, s) => count + Object.keys(s.scores).length, 0)
   ).toFixed(1);
 
   // 🔝 TOP 3 PERFORMERS
@@ -35,7 +39,7 @@ export default function Dashboard() {
       {/* TOP STATS */}
       <div className="grid grid-cols-4 gap-6">
         <StatCard title="Student Count" value={totalStudents} />
-        <StatCard title="Exam Average" value={`${overallAvg}%`} />
+        <StatCard title="Class Average" value={`${overallAvg}%`} />
         <StatCard title="Top Performers" value={topPerformers.length} />
         <StatCard title="Low Performers" value={lowPerformers.length} />
       </div>
